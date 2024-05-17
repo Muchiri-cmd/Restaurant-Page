@@ -5,12 +5,95 @@
 *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
+    color:white;
 }
-body{
-    font-family: 'k';
-    font-size:100px;
+body {
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('./bg.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative; 
 }
-.content{
-    border:2px solid red;
-   
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.45); 
+    z-index: -1; 
+}
+
+.content {
+    min-height: 100vh; 
+    width: 60%;
+    padding: 2.5em;
+    background-image: url('./kfc.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    line-height: 2em;
+    position: relative; 
+    overflow-y: auto; 
+    z-index: 1; 
+    font-weight:bold;
+}
+.content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.45); 
+    z-index: 2; 
+    pointer-events: none; 
+}
+
+.content p,
+.content span,
+.content img,
+.content .desc {
+    position: relative; 
+    z-index: 3;  
+    color: white; 
+}
+
+header > nav > button {
+    padding:.5em;
+    margin:.5em 2em;
+    border-radius: .5em;
+    background-color:transparent;
+    border:none;
+    font-size:1.5em;
+    font-weight: bold;
+    &:hover{
+        cursor: pointer;
+        color:red;
+    }
+}
+#menu-tab img{
+    height:200px;
+    width:200px;
+    border-radius: 5em;
+}
+#menu-tab{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap:1em;
+    
+}
+.menu-item{
+    display: flex;
+    flex-direction: column;
 }
