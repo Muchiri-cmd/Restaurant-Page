@@ -63,7 +63,6 @@ body::before {
 header > nav > button {
     padding:.5em;
     margin:.5em 2em;
-    border-radius: .5em;
     background-color:transparent;
     border:none;
     font-size:1.5em;
@@ -84,8 +83,8 @@ header > nav > button {
     } 
     img{
         border-radius: 1em;
-        height:40em;
-        width: 50em;
+        height:35em;
+        width: 90%;
     }
 }
 #home-tab p, #home-tab span {
@@ -96,13 +95,12 @@ header > nav > button {
 #menu-tab img{
     height:200px;
     width:200px;
-    border-radius: 5em;
+    border-radius: 20px;
 }
 #menu-tab{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap:1em;
-  
 }
 .menu-item{
     animation: fadeIn 0.5s ease forwards;
@@ -167,5 +165,71 @@ header > nav > button {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media screen and (max-width:1500px) {
+    #home-tab img{
+        width:70%;
+        height:35rem;
+    }
+    .content{
+        padding:1.5rem;
+        width:65%;
+    }
+}
+
+@media screen and (max-width:780px) {
+    body{
+        font-size: 1.2rem;
+    }
+    #menu-tab{
+        grid-template-columns: 1fr;
+        img{
+            height:25rem;
+            width:100%;
+        }
+    }
+    #menu-tab,#about-tab,#home-tab{
+        margin-top:3rem;
+    }
+    #home-tab img{
+        width:100%;
+        height:35rem;
+    }
+    header > nav > button {
+        padding:.1rem;
+        margin:.7rem .7rem;
+        background-color:transparent;
+        border:none;
+    }
+    header > nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%; 
+        z-index: 1000;
+        background-color: #450a0a;
+        text-align: center;
+        border-radius: .2rem;
+    }
+}
+@media screen and (max-width:650px) {
+   #home-tab img{
+        width:100%;
+        height:32rem;
+    }
+    #menu-tab{
+        grid-template-columns: 1fr;
+        img{
+            height:12rem;
+            width:100%;
+        }
+    }
+    body{
+        font-size: .7rem;
+    }
+    .content{
+        width:100%;
     }
 }
