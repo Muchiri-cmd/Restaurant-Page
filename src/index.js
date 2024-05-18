@@ -1,12 +1,14 @@
 import './styles.css';
-import BgImg from './bg.jpeg';
-import coverImg from './kfc.jpeg';
-import burgerImg from './burger.jpg';
-import friesImg from './fries.jpeg';
-import bucketImg from './bucket.jpeg';
-import comboImg from './combo.jpeg';
-import friesChickenImg from './frieschicken.jpeg';
-import sodaChickenImg from './sodachicken.jpeg';
+import BgImg from './imgs/bg.jpeg';
+import coverImg from './imgs/kfc.jpeg';
+import burgerImg from './imgs/burger.jpg';
+import friesImg from './imgs/fries.jpeg';
+import bucketImg from './imgs/bucket.jpeg';
+import comboImg from './imgs/combo.jpeg';
+import friesChickenImg from './imgs/frieschicken.jpeg';
+import sodaChickenImg from './imgs/sodachicken.jpeg';
+import ad from './imgs/ad.jpeg';
+
 import _ from 'lodash'
 
 const homeTabBtn = document.getElementById('Home');
@@ -19,19 +21,15 @@ const aboutTab = document.getElementById('about-tab')
 
 const contentDiv = document.getElementById('content');
 
-
-
 // Add event listeners to the buttons
 homeTabBtn.addEventListener('click', loadHomeTab);
 menuTabBtn.addEventListener('click', loadMenuTab);
 aboutTabBtn.addEventListener('click', loadAboutTab);
 
-
 // Clear content div
 function clearContent() {
    contentDiv.innerHTML = '';
 }
-
 //Create and populate the Home tab
 function loadHomeTab() {
    clearContent();
@@ -39,7 +37,8 @@ function loadHomeTab() {
    homeTab.id = 'home-tab';
 
    const p1 = document.createElement('p');
-   p1.textContent = "How would you like your order today ?";
+   p1.textContent = `Welcome to KFC, where every meal is a celebration of taste. Dive into our world of crispy,
+   juicy chicken and delightful sides. Order now and enjoy the legendary flavors delivered right to your doorstep!`;
    homeTab.appendChild(p1);
 
    const span1 = document.createElement('span');
@@ -47,17 +46,18 @@ function loadHomeTab() {
    homeTab.appendChild(span1);
 
    const p2 = document.createElement('p');
-   p2.textContent = "Explore Our Menu ➙";
+   p2.textContent = `Indulge in the Original Recipe
+   Experience the authentic taste of KFC's Original Recipe Chicken. Hand-breaded and seasoned
+   to perfection with secret ingridients and spices. Taste the tradition that has been loved for generations.`; 
    homeTab.appendChild(p2);
 
-   const span2 = document.createElement('span');
-   span2.className = 'motto';
-   span2.textContent = "Fingerlickin' good...";
-   homeTab.appendChild(span2);
+   //add menu image
+   const adImg = new Image();
+   adImg.src = ad;
+   homeTab.appendChild(adImg)
 
    contentDiv.appendChild(homeTab);
 }
-
 // Define menu data
 const menuItems = [
     {
@@ -81,7 +81,7 @@ const menuItems = [
     {
         title: 'Combo Meal',
         price: 350,
-        description: 'Perfect combo of burger, fries and drink.',
+        description: 'Perfect combo of chicken, fries and drink.',
         image: comboImg
     },
     {
@@ -96,10 +96,8 @@ const menuItems = [
         description: 'Crispy chicken and fries served with a refreshing soda.',
         image: sodaChickenImg
     },
- 
-    
- 
 ];
+
 //Create and populate the Menu tab
 function loadMenuTab() {
    clearContent();
@@ -107,9 +105,10 @@ function loadMenuTab() {
    const menuTab = document.createElement('div');
    menuTab.id = 'menu-tab';
    
-   menuItems.forEach(item => {
+   menuItems.forEach((item, index) => {
         const menuItem = document.createElement('div');
         menuItem.classList.add('menu-item');
+        menuItem.style.setProperty('--animation-order', index);
 
         const img = document.createElement('img');
         img.src = item.image;
@@ -117,7 +116,7 @@ function loadMenuTab() {
 
         const title = document.createElement('span');
         title.classList.add('item-name');
-        title.textContent = item.title + ' |' + `$${item.price}`;
+        title.textContent = `${item.title} | $${item.price}`;
 
         const description = document.createElement('div');
         description.classList.add('desc');
@@ -138,21 +137,56 @@ function loadAboutTab() {
    const aboutTab = document.createElement('div');
    aboutTab.id = 'about-tab';
 
-   const p1 = document.createElement('p');
+   const p1 = document.createElement('h2');
    p1.textContent = 'About Us';
    aboutTab.appendChild(p1);
 
    const p2 = document.createElement('p');
-   p2.textContent = 'Welcome to KFC!';
+   p2.innerHTML = `We are KFC, home of the world-famous fried chicken. With over 30,000 locations in 150 countries, we're the second-largest fast food chain on the planet.
+                   Our story began in the 1930s with Colonel Harland Sanders. His secret recipe was so good, it took over the world. The Colonel's face is still smiling down on us from every bucket.
+                   Our slogans say it all: "It's Finger Lickin' Good!" and "Nobody does chicken like KFC".
+                   Come for the chicken, stay for the smiles. And remember, it's always finger-lickin' good!`;
    aboutTab.appendChild(p2);
 
-   const p3 = document.createElement('p');
-   p3.innerHTML = `We are KFC, home of the world-famous fried chicken. With over 30,000 locations in 150 countries, we're the second-largest fast food chain on the planet (watch out, McDonald's).
-                   Our story began in the 1930s with Colonel Harland Sanders, who started frying chicken in Corbin, Kentucky. His secret recipe with "11 herbs and spices" was so good, it took over the world. The Colonel's face is still smiling down on us from every bucket.
-                   We were the first to take American fried chicken global, opening our first international locations in the 1960s. We even cracked China in 1987 and now it's our biggest market.
-                   Our menu has grown to include sandwiches, wraps and all your favorite sides, but our original fried chicken remains the star. Our slogans say it all: "It's Finger Lickin' Good!" and "Nobody does chicken like KFC".
-                   Come for the chicken, stay for the smiles. And remember, it's always finger-lickin' good!`;
-   aboutTab.appendChild(p3);
+   const p3= document.createElement('h2');
+   p3.textContent = 'Our Mission';
+   aboutTab.appendChild(p3)
+
+   const p4 = document.createElement('p');
+   p4.innerHTML = `To deliver joy one serving at a time, with mouth-watering meals that make every moment special.`
+   aboutTab.appendChild(p4);
+
+
+   const p5= document.createElement('h2');
+   p5.textContent = 'Join the KFC Family';
+   aboutTab.appendChild(p5)
+
+   const p6 = document.createElement('p');
+   p6.innerHTML = `Dive into our world of finger-lickin' goodness. Whether you're dining in, taking out, or ordering online, we’re here to make your day delicious.`;
+   aboutTab.appendChild(p6);
+
+   const iconsDiv = document.createElement('div');
+   iconsDiv.classList.add('icons-div');
+
+    // Define the social media icons 
+    const socialMedia = [
+        { class: 'fab fa-twitter', url: 'https://twitter.com/KFCinKenya' },
+        { class: 'fab fa-instagram', url: 'https://www.instagram.com/kfckenya/' },
+        { class: 'fab fa-youtube', url: 'https://www.youtube.com/channel/UCeIvrX5BUZ9d1B5rmxz5w_Q' },
+        { class: 'fab fa-facebook',  url: 'https://www.facebook.com/kfckenya'}
+    ];
+    socialMedia.forEach(media =>{
+        const anchor = document.createElement('a');
+        anchor.href = media.url;
+        anchor.target = '_blank';
+
+        const icon = document.createElement('i');
+        icon.className = media.class;
+
+        anchor.appendChild(icon);
+        iconsDiv.appendChild(anchor);
+    })
+   aboutTab.appendChild(iconsDiv);
 
    contentDiv.appendChild(aboutTab);
 }
